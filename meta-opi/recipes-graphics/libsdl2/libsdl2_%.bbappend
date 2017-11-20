@@ -1,0 +1,1 @@
+PACKAGECONFIG_APPEND = " x11 gles2"
