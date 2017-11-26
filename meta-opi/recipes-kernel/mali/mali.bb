@@ -1,6 +1,6 @@
 SUMMARY = "Mali-400 driver"
 LICENSE = "GPLv2"
-LIC_FILES_CHKSUM = "file://${S}/linux/license/gpl/mali_kernel_license.h;md5=1436c0d104589824163a3eb50fbb5050"
+LIC_FILES_CHKSUM = "file://${COREBASE}/meta/COPYING.GPLv2;md5=751419260aa954499f7abaabaa882bbe"
 
 inherit module
 

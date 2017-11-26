@@ -1,0 +1,52 @@
+diff --git a/Makefile b/Makefile
+index 5e35884..e151ccc 100755
+--- a/Makefile
++++ b/Makefile
+@@ -11,9 +11,21 @@
+ # Makefile for the drm device driver.  This driver provides support for the
+ # Direct Rendering Infrastructure (DRI) in XFree86 4.1.0 and higher.
+ 
++CONFIG_DRM_MALI := m
++
+ ccflags-y = -Iinclude/drm
++
+ mali_drm-y := mali_drv.o mali_mm.o
+ 
+ obj-$(CONFIG_DRM_MALI)   += mali_drm.o
+ 
++SRC = $(shell pwd)
++
++all:
++	$(MAKE) -C $(KERNEL_SRC) M=$(SRC) modules
++
++modules_install:
++	$(MAKE) -C $(KERNEL_SRC) M=$(SRC) modules_install
+ 
++clean:
++	$(MAKE) -C $(KERNEL_SRC) M=$(SRC) clean
+diff --git a/mali_drv.c b/mali_drv.c
+index 1993bbd..14c9108 100755
+--- a/mali_drv.c
++++ b/mali_drv.c
+@@ -11,7 +11,7 @@
+ #include <linux/vermagic.h>
+ #include <linux/version.h>
+ #include "drmP.h"
+-#include "mali_drm.h"
++#include "../include/mali_drm.h"
+ #include "mali_drv.h"
+ 
+ static struct platform_device *pdev;
+diff --git a/mali_mm.c b/mali_mm.c
+index fe805f4..15ed9ce 100755
+--- a/mali_mm.c
++++ b/mali_mm.c
+@@ -9,7 +9,7 @@
+  */
+ 
+ #include "drmP.h"
+-#include "mali_drm.h"
++#include "../include/mali_drm.h"
+ #include "mali_drv.h"
+ 
+ #define VIDEO_TYPE 0
