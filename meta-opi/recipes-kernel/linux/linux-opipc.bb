@@ -15,3 +15,5 @@ SRC_URI = " \
 SRC_URI_append-orange-pi-pc = " \
   file://Enable-Dvfs.patch \
 "
+
+SRC_URI_append_orange-pi-pc-plus = "file://0002-arm-dts-sun8i-h3-orangepi-2-Enable-UART3.patch"
